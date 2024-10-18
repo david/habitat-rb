@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.join(__dir__, "..", "lib"))
+
+require "habitat"
+require "habitat/container"
+
+Habitat::Blueprint.
+  new(File.read("Blueprint")).
+  environments.
+  each(&:sync)
